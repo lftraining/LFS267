@@ -26,7 +26,8 @@ services:
         condition: service_started
       
   docker-service:
-    image: verb/socat:alpine
+    #image: verb/socat:alpine
+    image: ${DOCKER_SERVICE_IMAGE}
     restart: unless-stopped
     command: tcp-listen:2375,reuseaddr,fork unix:/docker.sock
     expose:
@@ -47,6 +48,8 @@ services:
       - ./jenkins/11-configure-master.groovy:/usr/share/jenkins/ref/init.groovy.d/11-configure-master.groovy
       - ./jenkins/12-configure-master.groovy:/usr/share/jenkins/ref/init.groovy.d/12-configure-master.groovy
       - ./jenkins/13-configure-master.groovy:/usr/share/jenkins/ref/init.groovy.d/13-configure-master.groovy
+      - ./jenkins/12-configure-go1.17.groovy:/usr/share/jenkins/ref/init.groovy.d/12-configure-go1.17.groovy
+      - /Users/dgautam/lfs-jenkins-config:/var/jenkins_home
     depends_on:
       - jdk17-ssh-agent
       - jdk21-ssh-agent

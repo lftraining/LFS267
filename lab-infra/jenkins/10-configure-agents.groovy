@@ -38,7 +38,7 @@ String baseJvmOpts = env['BASE_JVM_OPTS']
 // CREATE THE JDK17 AGENT
 SSHLauncher jdk17Launcher = new SSHLauncher("jdk17-ssh-agent", 22, "ssh-agent-key", baseJvmOpts, "", "", "", 33, 3, 5, doNotVerifyHostKey)
 Slave jdk17SSHAgent = new DumbSlave("jdk17-node", "/home/jenkins", jdk17Launcher)
-jdk17SSHAgent.setLabelString("docker maven jdk17 jdk-17 java17 java-17 go-1.21 java docker dind docker-in-docker")
+jdk17SSHAgent.setLabelString("docker maven jdk17 jdk-17 java17 java-17 go-1.21.8 java docker dind docker-in-docker")
 jdk17SSHAgent.setNodeDescription("Agent node for JDK17")
 jdk17SSHAgent.setNumExecutors(2)
 List<Entry> jdk17SSHAgentEnv = new ArrayList<Entry>();
@@ -50,7 +50,7 @@ Jenkins.instance.addNode(jdk17SSHAgent)
 // Add JDK 21 Agent
 SSHLauncher jdk21Launcher = new SSHLauncher("jdk21-ssh-agent", 22, "ssh-agent-key", baseJvmOpts, "", "", "", 33, 3, 5, doNotVerifyHostKey)
 Slave jdk21SSHAgent = new DumbSlave("jdk21-node", "/home/jenkins", jdk21Launcher)
-jdk21SSHAgent.setLabelString("maven jdk21 jdk-21 java21 java-21 go-1.21")
+jdk21SSHAgent.setLabelString("maven jdk21 jdk-21 java21 java-21 go-1.22.2")
 jdk21SSHAgent.setNodeDescription("Agent node for JDK21")
 jdk21SSHAgent.setNumExecutors(2)
 List<Entry> jdk21SSHAgentEnv = new ArrayList<Entry>();
