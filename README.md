@@ -1,2 +1,2 @@
 # LFS267
-Jenkins Essentials
+Jenkins Essentials Lab Infra
